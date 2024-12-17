@@ -1,6 +1,7 @@
 package com.example.lesson03.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.lesson03.domain.Review;
 
@@ -8,4 +9,21 @@ import com.example.lesson03.domain.Review;
 public interface ReviewMapper {
 	
 	public Review selectReviewById(int id);
+	
+	// i: Review
+	// o: void or int(성공한 행의 개수)
+	public int insertReview(Review review);
+	
+	public int insertReviewAsField(
+			@Param("storeId") int storeId,
+			@Param("menu") String menu, 
+			@Param("userName") String userName, 
+			@Param("point") Double point, 
+			@Param("review") String review);
+	
+	public int updateReviewById(
+			@Param("id") int id,
+			@Param("review") String review);
+	
+	public int deleteReviewById(int id);
 }
