@@ -38,4 +38,13 @@
 			,NOW()
 		)
 	</insert>
+	
+	<select id="isDuplicateByName" parameterType="String" resultType="boolean">
+		SELECT
+			COUNT(*)
+		FROM
+			`new_user`
+		WHERE
+			`name` = #{name}
+	</select>
 </mapper>
